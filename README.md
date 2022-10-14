@@ -116,13 +116,13 @@
 
 회원 정보 조회
 
-- `GET` http://127.0.0.1:8000/accounts/<int:user_pk>/
+- `GET` http://127.0.0.1:8000/accounts/\<int:user_pk>/
 
 **화면 Template**
 
 회원 조회 페이지(프로필 페이지)
 
-- `GET` http://127.0.0.1:8000/accounts/<int:user_pk>/
+- `GET` http://127.0.0.1:8000/accounts/\<int:user_pk>/
 
 
 ---
@@ -198,7 +198,7 @@
 - 로그인 상태에 따라 다른 화면 출력
     1. 로그인 상태
         - 로그인 한 사용자의 username 출력
-            - username을 클릭하면 회원 조회 페이지로 이동
+            - username을 클릭하면 마이 페이지로 이동
         - 로그아웃 버튼
     2. 비 로그인 상태 
         - 로그인 페이지 이동 버튼 `(django auth의 decorators 기능 중 login_required 기능을 활용)`
@@ -223,10 +223,10 @@
   
     | 이름 | 역할 | 필드 | 속성 |
     | --- | --- | --- | --- |
-    | title | 리뷰 제목 | Char |  |
+    | title | 리뷰 제목 | Char | max_length=80 |
     | content | 리뷰 내용 | Text |  |
-    | movie_name | 영화 이름 | Char |  |
-    | grade | 영화 평점 | Integer |  |
+    | movie_name | 영화 이름 | Char | max_length=80 |
+    | grade | 영화 평점 | Integer | validators=[MinValueValidator(0), MaxValueValidator(10)] |
     | created_at | 리뷰 생성시간 | DateTime | auto_now_add=True |
     | updated_at | 리뷰 수정시간 | DateTime | auto_now = True |
     | user_name | 작성자 | ForeignKey | User, on_delete=models.CASCADE, null=True |
