@@ -23,14 +23,13 @@
       <div class="container-fluid">
         <a class="navbar-brand mx-3" href='{% url 'accounts:index' %}'>LOGO</a>
         <div class="d-flex mx-3">
+          {% if request.user.is_authenticated %}
           <li class="nav-item list-unstyled mx-3">
-            <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+            <a class="nav-link active text-white" href="{% url 'reviews:create' %}">리뷰 작성</a>
           </li>
+          {% endif %}
           <li class="nav-item list-unstyled mx-3">
-            <a class="nav-link active text-white" href="#">About</a>
-          </li>
-          <li class="nav-item list-unstyled mx-3">
-            <a class="nav-link active text-white" href="#">Members</a>
+            <a class="nav-link active text-white" href="{% url 'reviews:index' %}">리뷰 목록</a>
           </li>
           <li class="nav-item list-unstyled mx-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-person-circle" viewbox="0 0 16 16">
