@@ -2,7 +2,6 @@
 {% load django_bootstrap5 %}
 
 {% block content %}
-
   <div class="container">
     <div class="my-5">
       {% if request.resolver_match.url_name == 'change_password' %}
@@ -18,7 +17,7 @@
     <form action='' method='POST'>
       {% csrf_token %}
       {% bootstrap_form form %}
-      <input type="submit">
+      <input class="btn btn-outline-dark float-end" type="submit">
     </form>
   </div>
 {% endblock content %}
