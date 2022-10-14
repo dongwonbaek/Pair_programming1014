@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+<p>{{ request.user.last_name }}</p>
+<p>{{ request.user.first_name }}</p>
+<p>{{ request.user.email }}</p>
+
+<button class="btn btn-dark" type="button" onclick="location.href='{% url 'accounts:update' %}'">
+    Update Profile
+</button>
+{% endblock content %}
