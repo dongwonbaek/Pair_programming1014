@@ -11,11 +11,17 @@
 #### Git 활용 과정
 
 ❗ 모든 과정 완료 후 
+
 [로컬/드라이버] accounts/detail → [원격/드라이버] accounts/detail,  Commit & Push 수행
+
 [원격/드라이버] accounts/detail → [원격/드라이버] main, PR 생성 & Merge 수행
+
 [원격/드라이버] accounts/detail 브랜치 삭제
+
 [원격/전체] main → [로컬/전체] main, Pull 수행
+
 드라이버 변경
+
 [로컬/새 드라이버] accounts/update 브랜치에서 다음 토픽 진행
 
 ---
@@ -143,6 +149,12 @@
 
 - `POST` http://127.0.0.1:8000/accounts/update/
 
+회원 비밀번호 수정 
+
+- update_session_auth_hash 를 활용하여 비밀번호가 변경되어도 세션을 유지할 수 있도록 함.
+
+- POST http://127.0.0.1:8000/accounts/password/
+
 **화면 Template**
 
 회원 정보 수정 페이지
@@ -211,12 +223,13 @@
   
     | 이름 | 역할 | 필드 | 속성 |
     | --- | --- | --- | --- |
-    | title | 리뷰 제목 |  |  |
-    | content | 리뷰 내용 |  |  |
-    | movie_name | 영화 이름 |  |  |
-    | grade | 영화 평점 |  |  |
+    | title | 리뷰 제목 | Char |  |
+    | content | 리뷰 내용 | Text |  |
+    | movie_name | 영화 이름 | Char |  |
+    | grade | 영화 평점 | Integer |  |
     | created_at | 리뷰 생성시간 | DateTime | auto_now_add=True |
     | updated_at | 리뷰 수정시간 | DateTime | auto_now = True |
+    | user_name | 작성자 | ForeignKey | User, on_delete=models.CASCADE, null=True |
 
 **기능 View**
 
