@@ -8,9 +8,9 @@
       |
       {{ user.username }}
       |
-      {{ user.email }}</p>
+      {{ user.email }}
+      |
+      <a href="{% url 'accounts:detail' user.pk %}">프로필</a>
+    </p>
   {% endfor %}
-  {% if request.user.is_authenticated %}
-    <a href="{% url 'accounts:logout' %}">로그아웃</a>
-  {% endif %}
 {% endblock content %}
