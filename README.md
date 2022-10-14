@@ -5,9 +5,11 @@
 ## 목표
 - **CRUD** 구현
 - Django **Auth** 활용 회원 관리(회원가입 / 회원 조회 / 로그인 / 로그아웃)
+- git 을 통한 협업과정 숙달
 
 ---
-<aside>
+#### Git 활용 과정
+
 ❗ 모든 과정 완료 후 
 [로컬/드라이버] accounts/detail → [원격/드라이버] accounts/detail,  Commit & Push 수행
 [원격/드라이버] accounts/detail → [원격/드라이버] main, PR 생성 & Merge 수행
@@ -15,7 +17,9 @@
 [원격/전체] main → [로컬/전체] main, Pull 수행
 드라이버 변경
 [로컬/새 드라이버] accounts/update 브랜치에서 다음 토픽 진행
-</aside>
+
+---
+
 
 ### 앱 이름 : accounts
 
