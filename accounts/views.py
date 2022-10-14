@@ -1,10 +1,10 @@
 from difflib import context_diff
 from django.shortcuts import redirect, render
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from .models import User
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -29,7 +29,7 @@ def signup(request):
     context = {
         "form": form,
     }
-    return render(request, "accounts/signup.html", context)
+    return render(request, "accounts/form.html", context)
 
 
 def login(request):
@@ -43,7 +43,7 @@ def login(request):
     context = {
         "form": form,
     }
-    return render(request, "accounts/login.html", context)
+    return render(request, "accounts/form.html", context)
 
 
 def logout(request):
@@ -72,8 +72,22 @@ def update(request):
     context = {
         'form': form,
     }
-    return render(request, 'accounts/update.html', context)
+    return render(request, 'accounts/form.html', context)
 
 @login_required
 def mypage(request):
     return render(request, 'accounts/mypage.html')
+
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            return redirect('accounts:mypage')
+    else:
+        form = PasswordChangeForm(request.user)
+    context = {
+        'form':form,
+    }
+    return render(request, 'accounts/form.html', context)
