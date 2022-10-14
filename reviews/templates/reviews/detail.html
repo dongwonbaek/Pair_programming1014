@@ -21,7 +21,12 @@
     <p>리뷰 수정시간 :
       {{ review.updated_at }}
     </p>
-    <a href=""><input type="submit" class="btn btn-warning " value="수정"></a>
-    <a href=""><input type="submit" class="btn btn-danger" value="삭제"></a>
+    <a href="{% url 'reviews:update' review.pk %}"><input type="submit" class="btn btn-warning " value="수정"></a>
+    <form action="{% url 'reviews:delete' review.pk %}" method="POST">
+      {% csrf_token %}
+      <button class="btn btn-danger" type="submit">
+          삭제
+        </button>    
+  </form>
   </div>
 {% endblock %}
