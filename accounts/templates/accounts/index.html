@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+  <h1>홈</h1>
+  {% for user in users %}
+    <p>{{ user.pk }}
+      |
+      {{ user.username }}
+      |
+      {{ user.email }}</p>
+  {% endfor %}
+  {% if request.user.is_authenticated %}
+    <a href="{% url 'accounts:logout' %}">로그아웃</a>
+  {% endif %}
+{% endblock content %}
