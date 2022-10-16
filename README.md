@@ -10,7 +10,7 @@
 ---
 #### Git 활용 과정
 
-❗ 모든 과정 완료 후 
+❗ 각 과정 완료 후 
 
 [로컬/드라이버] accounts/detail → [원격/드라이버] accounts/detail,  Commit & Push 수행
 

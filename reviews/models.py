@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
-from accounts.models import User
+from django.contrib.auth import get_user_model
 
 # Create your models here.
 class Review(models.Model):
@@ -12,4 +12,4 @@ class Review(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    user_name = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    user_name = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True)
